@@ -53,3 +53,29 @@ console.log('typeof bigNum: ', typeof bigNum)
 console.log('typeof heros: ', typeof heros)
 console.log('typeof obj: ', typeof obj)
 console.log('typeof myFunc: ', typeof myFunc) // its not a function, its an object function
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Memory In Js
+// 1. Stack Memory (Primitive Data Types)
+// 2. Heap Memory (Non-Primitive Data Types)
+
+let myYTName = 'CodeWithSM'
+let ytName = myYTName
+ytName = 'CodeWithSoubhagya'
+
+console.log(myYTName) // CodeWithSM
+console.log(ytName) // CodeWithSoubhagya
+
+// All the non-primitive data types are stored in the heap memory
+// And when we take reference from heap memory, we don't get the value from the heap memory, we get the reference of the value from the heap memory.
+let userOne = {
+  name: 'soubhagya',
+  age: 28,
+  email: 'soubhagya@example.com',
+}
+
+let userTwo = userOne
+userTwo.name = 'hitesh'
+console.log('userOne name :', userOne.name) // hitesh
+console.log('userTwo name :', userTwo.name) // hitesh
