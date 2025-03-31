@@ -70,3 +70,26 @@ users[1].email
 
 // console.log(Object.entries(tinderUser))
 console.log(tinderUser.hasOwnProperty('isLoggedIn'))
+
+// Object de structuring
+const course = {
+  courseName: 'JavaScript',
+  price: '999',
+  courseInstructor: 'Kyle',
+}
+
+// console.log(course.courseInstructor)
+const { courseInstructor: instructor, courseName, price } = course
+console.log(instructor, courseName, price)
+
+// {
+//     "name": "hitesh",
+//     "coursename": "js in hindi",
+//     "price": "free"
+// }
+
+// [
+//     {},
+//     {},
+//     {}
+// ]
