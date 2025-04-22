@@ -99,3 +99,44 @@ const flattenIterative = (arr) => {
 }
 
 console.log(flattenIterative(nestedArr3))
+
+// Iterative approach WITH depth
+const nestedArr4 = [
+  1,
+  [2, 3],
+  4,
+  [5, 6, 7],
+  8,
+  [9, 10, [11, 12, 13, [14, 15]]],
+  20,
+  21,
+  [22, [[23, 24], [25, 26], 27, 28]],
+]
+
+const depth = 3
+
+const flattenIterativeWithDepth = (arr, depth) => {
+  if (!Array.isArray(arr)) {
+    throw new Error('Input must be an array')
+  }
+  if (depth === 0) return arr
+
+  const stack = arr.map((item) => [item, depth])
+  const result = []
+
+  while (stack.length) {
+    const [ele, currentDepth] = stack.pop()
+
+    if (Array.isArray(ele) && currentDepth > 0) {
+      // Push items with decremented depth in reverse to preserve order
+      for (let i = ele.length - 1; i >= 0; i--) {
+        stack.push([ele[i], currentDepth - 1])
+      }
+    } else {
+      result.push(ele)
+    }
+  }
+  return result.reverse()
+}
+
+console.log(flattenIterativeWithDepth(nestedArr4, depth))
