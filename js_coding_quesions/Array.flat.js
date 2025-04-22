@@ -40,7 +40,7 @@ const flattenRecursive = (arr) => {
   return output
 }
 
-console.log(flattenRecursive(nestedArr))
+// console.log(flattenRecursive(nestedArr))
 
 // Recursive approach WITH depth
 
@@ -66,3 +66,36 @@ console.log(flattenRecursive(nestedArr))
 // }
 
 // console.log(flattenRecursiveWithDepth(nestedArr2, depth))
+
+// Iterative approach WITHOUT depth
+const nestedArr3 = [
+  1,
+  [2, 3],
+  4,
+  [5, 6, 7],
+  8,
+  [9, 10, [11, 12, 13, [14, 15]]],
+  20,
+  21,
+]
+
+const flattenIterative = (arr) => {
+  if (!Array.isArray(arr)) {
+    throw new Error('Input must be an array')
+  }
+
+  const stack = [...arr]
+  const result = []
+
+  while (stack.length) {
+    const ele = stack.pop()
+    if (Array.isArray(ele)) {
+      stack.push(...ele)
+    } else {
+      result.push(ele)
+    }
+  }
+  return result.reverse()
+}
+
+console.log(flattenIterative(nestedArr3))
